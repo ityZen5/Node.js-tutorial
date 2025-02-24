@@ -72,7 +72,22 @@ app.put('/update/:id', (req, res) => {
             message: `Book with ID ${req.params.id} not found`
         })
     }
+})
 
+//delete a book
+app.delete('/delete/:id', (req, res) =>{
+    const findIndexOfCurrentBook = books.findIndex((item )=> item.id == req.params.id);
+    if(findIndexOfCurrentBook !== -1){
+        const deletedBook = books.splice(findIndexOfCurrentBook, 1);
+        res.status(200).json({
+            message : `Book deleted successfully`,
+            data : deletedBook[0]
+        })
+    }else {
+        res.status(404).json({
+            message: `Book with ID ${req.params.id} not found`
+        })
+    }       
 })
 const PORT = 3000;
 app.listen(PORT, () => {
