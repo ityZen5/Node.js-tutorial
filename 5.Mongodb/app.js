@@ -19,13 +19,13 @@ const User = mongoose.model('User', userSchema)
 async function runQueryExamples() {
     try {
         //create a new document -> Method 1
-        // const newUser = await User.create({
-        //     name: 'John Doe',
-        //     email: 'johndoe1@gmail.com',
-        //     age: '29',
-        //     isActive: true,
-        //     tags: ['businessman', 'developer', 'problem-solver'],
-        // })
+        const newUser = await User.create({
+            name: 'Maria Doe',
+            email: 'mariadoe1@gmail.com',
+            age: '49',
+            isActive: true,
+            tags: ['businessman', 'developer', 'problem-solver'],
+        })
 
          //create a new document -> Method 2
         //  const newUser = new User({
@@ -48,9 +48,14 @@ async function runQueryExamples() {
         // const getUserActiveFalse = await User.find({isActive : true})
         // console.log(getUserActiveFalse,);
         
-        //getting the first user with specific requirements
-        const getJohnDoeFirst = await User.findOne({name: "John Doe"})
-        console.log(getJohnDoeFirst);
+        // //getting the first user with specific requirements
+        // const getJohnDoeFirst = await User.findOne({name: "John Doe"})
+        //console.log(getJohnDoeFirst);
+
+        //get last created user by id
+        const getLastCreatedUserById = await User.findById(newUser._id);
+        console.log(getLastCreatedUserById, "getLastCreatedUserById");
+        
         
         
     } catch (error) {
