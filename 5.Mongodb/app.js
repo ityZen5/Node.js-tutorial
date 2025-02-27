@@ -21,9 +21,9 @@ async function runQueryExamples() {
         //create a new document -> Method 1
         // const newUser = await User.create({
         //     name: 'John Doe',
-        //     email: 'johndoe@gmail.com',
-        //     age: '25',
-        //     isActive: false,
+        //     email: 'johndoe1@gmail.com',
+        //     age: '29',
+        //     isActive: true,
         //     tags: ['businessman', 'developer', 'problem-solver'],
         // })
 
@@ -38,16 +38,19 @@ async function runQueryExamples() {
 
         // await newUser.save();
 
-      // console.log('Created a new User ', newUser);
+      //console.log('Created a new User ', newUser);
 
         //get all users
         // const allUsers = await User.find({});
         // console.log(allUsers);
 
-        //getting specific requirements
-        const getUserActiveFalse = await User.find({isActive : true})
-        console.log(getUserActiveFalse,);
+        // //getting specific requirements
+        // const getUserActiveFalse = await User.find({isActive : true})
+        // console.log(getUserActiveFalse,);
         
+        //getting the first user with specific requirements
+        const getJohnDoeFirst = await User.findOne({name: "John Doe"})
+        console.log(getJohnDoeFirst);
         
         
     } catch (error) {
